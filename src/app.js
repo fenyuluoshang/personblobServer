@@ -1,4 +1,5 @@
-var port = normalizePort(process.env.PORT || '3000');
+const config = require('./config')
+var port = config.server.port
 
 var express = require('express');
 const bodyParser = require('body-parser');
@@ -38,19 +39,4 @@ async function init() {
     app.listen(port, () => {
         console.log(`server start at ${port}`)
     })
-}
-
-
-
-function normalizePort(val) {
-    var port = parseInt(val, 10);
-    if (isNaN(port)) {
-        // named pipe
-        return val;
-    }
-    if (port >= 0) {
-        // port number
-        return port;
-    }
-    return false;
 }

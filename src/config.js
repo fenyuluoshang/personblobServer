@@ -5,11 +5,14 @@ module.exports = {
     // updattime: 5, //git更新时间单位为分钟
     pagesize: 15, //列表页提供的每次刷新显示长度
     indexpageBlobSize: 5, //提供首页BLOB API 的最大显示条目
-    author: '纷羽', //用于部分签名
+    hostmaster: '纷羽', //用于部分签名
     remotename: 'blobdata',
     branchname: 'master',
     admin: {
         user: 'admin',
         password: 'admin'
+    },
+    server: {
+        port: 3001
     }
 }

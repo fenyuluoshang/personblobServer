@@ -1,1 +1,1 @@
-module.exports = `# My Person Blob Save Path\n\n Make With Public Project from [@fenyushiner/perosonblobServer](https://github.com/fenyuluoshang/perosonblobServer) \n\n The Blob Author is ${require('../config').author}`
+module.exports = `# My Person Blob Save Path\n\n Make With Public Project from [@fenyushiner/perosonblobServer](https://github.com/fenyuluoshang/perosonblobServer) \n\n The Blob Master is ${require('../config').hostmaster}`
