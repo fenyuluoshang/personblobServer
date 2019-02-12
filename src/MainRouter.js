@@ -6,7 +6,7 @@ const fs = require('fs')
 
 router.post('/webhook', (req, res, next) => {
     // console.log(req.body)
-    gitdeal.updateSync().then((value) => {
+    gitdeal.pullSync().then((value) => {
         console.log('file has update')
     })
     res.json({
