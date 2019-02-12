@@ -8,10 +8,6 @@ module.exports = {
     hostmaster: '纷羽', //用于部分签名
     remotename: 'blobdata',
     branchname: 'master',
-    admin: {
-        user: 'admin',
-        password: 'admin'
-    },
     server: {
         port: 3001
     }

@@ -6,7 +6,8 @@
   "license": "LGPL",
   "scripts": {
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js --watch src"
+    "dev": "nodemon src/app.js --watch src",
+    "test":"node rsatest/start.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.3",
@@ -14,6 +15,8 @@
     "fs": "^0.0.1-security",
     "hosted-git-info": "^2.7.1",
     "http-errors": "^1.7.1",
+    "marked": "^0.6.0",
+    "node-rsa": "^1.0.3",
     "sequelize": "^4.42.0",
     "simple-git": "^1.107.0"
   },

@@ -1,8 +1,5 @@
 const fs = require('fs')
 const gitdeal = require('./gitdeal')
-if (!fs.existsSync('./data')) {
-    fs.mkdirSync('./data')
-}
 const sg = require('simple-git')('./data')
 const config = require('../config')
 

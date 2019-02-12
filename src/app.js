@@ -1,14 +1,28 @@
 const config = require('./config')
-var port = config.server.port
-
-var express = require('express');
+const fs = require('fs')
+if (!fs.existsSync('./data')) {
+    fs.mkdirSync('./data')
+}
+var NodeRSA = require('node-rsa')
+if (!fs.existsSync('./key') || !fs.existsSync('./key/admin') || !fs.existsSync('./key/admin.pub')) {
+    var key = new NodeRSA({
+        b: 2048
+    });
+    fs.mkdirSync('./key')
+    fs.writeFileSync('./key/admin', key.exportKey('pkcs8-private-pem'))
+    fs.writeFileSync('./key/admin.pub', key.exportKey('pkcs8-public-pem'))
+}
+const port = config.server.port
+const express = require('express');
 const bodyParser = require('body-parser');
-var path = require('path');
-var createError = require('http-errors');
-var app = express();
-app.set('port', port);
+const path = require('path');
+const createError = require('http-errors');
+const app = express();
 const initgit = require('./git/initgit')
+
+app.set('port', port);
 var apicentter
+
 
 //post data json/x-www-form-urlencoded deal mideware
 app.use(bodyParser.json());
