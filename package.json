@@ -1,0 +1,23 @@
+{
+  "name": "blobserver",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "author": "纷羽",
+  "license": "LGPL",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js --watch src"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.4",
+    "fs": "^0.0.1-security",
+    "hosted-git-info": "^2.7.1",
+    "http-errors": "^1.7.1",
+    "sequelize": "^4.42.0",
+    "simple-git": "^1.107.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}

@@ -1,0 +1,1 @@
+module.exports = `# My Person Blob Save Path\n\n`
