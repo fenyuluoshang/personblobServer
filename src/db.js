@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const config = require('./config')
+const gitdeal = require('./git/gitdeal')
 const sequelize = new Sequelize({
     dialect: 'sqlite',
     storage: './data/pathdata.sqlite',
@@ -7,7 +8,7 @@ const sequelize = new Sequelize({
 
 var bloblist = sequelize.define('bloblist', {
     blobId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(128),
         autoIncrement: true,
         primaryKey: true
     },
@@ -29,14 +30,15 @@ var sys = sequelize.define('sys', {
 init()
 async function init() {
     await sequelize.sync()
-    sys.create({
+    await sys.upsert({
         key: 'adminuser',
         value: config.admin.user
     })
-    sys.create({
+    await sys.upsert({
         key: 'adminpass',
         value: config.admin.password
     })
+    await gitdeal.updateSync()
 }
 
 module.exports = {

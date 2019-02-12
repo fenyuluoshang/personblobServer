@@ -6,6 +6,8 @@ module.exports = {
     pagesize: 15, //列表页提供的每次刷新显示长度
     indexpageBlobSize: 5, //提供首页BLOB API 的最大显示条目
     author: '纷羽', //用于部分签名
+    remotename: 'blobdata',
+    branchname: 'master',
     admin: {
         user: 'admin',
         password: 'admin'

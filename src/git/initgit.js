@@ -1,5 +1,5 @@
 const fs = require('fs')
-
+const gitdeal = require('./gitdeal')
 if (!fs.existsSync('./data')) {
     fs.mkdirSync('./data')
 }
@@ -21,8 +21,8 @@ function gitinitSync() {
     return new Promise((res, rej) => {
         try {
             sg.init(false, () => {
-                sg.addRemote('blobdata', config.gitpath, () => {
-                    sg.pull('blobdata', 'master', () => {
+                sg.addRemote(config.remotename, config.gitpath, () => {
+                    sg.pull(config.remotename, 'master', () => {
                         res()
                     })
                 })
@@ -53,5 +53,14 @@ function initDictionarySync() {
             })
         })
     })
+}
 
+if (config.autoupdate && !config.usewebhoock) {
+    setInterval(()=>{
+        autoupdate()
+    }, config.updattime * 60000)
+}
+
+async function autoupdate() {
+    await gitdeal.pullSync()
 }
