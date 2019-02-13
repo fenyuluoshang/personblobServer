@@ -37,7 +37,7 @@ npm start
 
 response：
 | success{Interger} | data[].blobId{Interger} | data[].blobName{String} | data[].blobItem{String} | data[].createdAt{JSONDate} | data[].updatedAt{JSONDate} |
-|---|---|---|---|---|---|
+|-------|-----------|--------|--------|-------|---------|
 | 成功返回码 | 博客id | 博客名 | 博客简介 | 创建时间 | 最后更新时间 |
 
 #### GET {{server_name}}/list
@@ -46,12 +46,12 @@ response：
 
 request-query:
 | page{Interger} |
-|-----|
+|----------------|
 | 页码(从0开始) |
 
 response:
 | success{Interger} | data[].blobId{Interger} | data[].blobName{String} | data[].blobItem{String} | data[].createdAt{JSONDate} | data[].updatedAt{JSONDate} | page |
-|---|---|---|---|---|---|---|
+|-------|--------|--------|-------|--------|--------|--------|
 | 成功返回码 | 博客id | 博客名 | 博客简介 | 创建时间 | 最后更新时间 | 回传确认页码 |
 
 #### GET {{server_name}}/blobtext
@@ -60,12 +60,12 @@ response:
 
 request-query:
 | id{Interger} |
-|-----|
+|--------------|
 | 博客id |
 
 response:
 | success{Interger} | data.blobId{Interger} | data.blobName{String} | data.text{HTML String}
-|---|---|---|---|
+|--------|---------|---------|----------|
 | 成功返回码 | 博客id | 博客名 | HTML元素 |
 
 #### POST {{server_name}}/admin/create
@@ -79,8 +79,8 @@ bodytype:application/json
 | 博文名 | 加密后的博文正文（RSA加密MarkDown文本） |
 
 response:
-| success{Interger} | data |
-|---|---|---|
+| success{Interger} | data | msg{String} |
+|----------|--------|--------|
 | 成功返回码 | 博客内容 | 异常代码 |
 
 ***这里注意，create以及后面的update接口，需要使用服务生成的RSA密钥公钥（路径为./key/admin.pub）对上传的MarkDown文档进行加密，用于认证服务器主人的访问***
@@ -96,8 +96,8 @@ bodytype:application/json
 | 博文名 | 加密后的博文正文（RSA加密MarkDown文本） | 博文id |
 
 response:
-| success{Interger} | data |
-|---|---|---|
+| success{Interger} | data | msg{String} |
+|----------|--------|--------|
 | 成功返回码 | 博客内容 | 异常代码 |
 
 ***这里注意，update以及前面的create接口，需要使用服务生成的RSA密钥公钥（路径为./key/admin.pub）对上传的MarkDown文档进行加密，用于认证服务器主人的访问***
