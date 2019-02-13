@@ -19,7 +19,7 @@ router.post('/create', async function (req, res, next) {
         })
         return
     }
-    var blobtext = marked(text).replace(/\x0a+/, ' ')
+    var blobtext = marked(text).replace(/\x0a+/g, ' ')
     var item = blobtext.replace(/<[^>]+>/g, "").substring(0, 30);
     var blob = await db.bloblist.create({
         blobName: tittle,
@@ -54,7 +54,7 @@ router.post('/update', async function (req, res, next) {
         })
         return
     }
-    var blobtext = marked(text).replace(/\x0a+/, ' ')
+    var blobtext = marked(text).replace(/\x0a+/g, ' ')
     var item = blobtext.replace(/<[^>]+>/g, "").substring(0, 30);
     var blob = await db.bloblist.update({
         blobName: tittle,
