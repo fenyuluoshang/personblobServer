@@ -1,51 +1,21 @@
-# Test Blob
-this is the first blob for my person blob server
+## 你好，初次相见，余生请多指教
 
-## Hello word
+你好，欢迎来到我的博客
 
+正如你所见，我是一个热爱二次元，热爱开发的技术型肥宅
 
-##MaHua是什么?
-一个在线编辑markdown文档的编辑器
+不满足与使用现有的博客框架，整个框架都是由我自己独立开发的
 
-向Mac下优秀的markdown编辑器mou致敬
+服务器部分的项目地址为 [github](https://github.com/fenyuluoshang/perosonblobServer)
 
-##MaHua有哪些功能？
+SERVER ONLINE 
 
-* 方便的`导入导出`功能
-    *  直接把一个markdown的文本文件拖放到当前这个页面就可以了
-    *  导出为一个html格式的文件，样式一点也不会丢失
-* 编辑和预览`同步滚动`，所见即所得（右上角设置）
-* `VIM快捷键`支持，方便vim党们快速的操作 （右上角设置）
-* 强大的`自定义CSS`功能，方便定制自己的展示
-* 有数量也有质量的`主题`,编辑器和预览区域
-* 完美兼容`Github`的markdown语法
-* 预览区域`代码高亮`
-* 所有选项自动记忆
+## 我与我的世界
 
-##有问题反馈
-在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
+主修是java，辅修是javascript
 
-* 邮件(dev.hubo#gmail.com, 把#换成@)
-* QQ: 287759234
-* weibo: [@草依山](http://weibo.com/ihubo)
-* twitter: [@ihubo](http://twitter.com/ihubo)
+最喜欢做的事是写神仙代码（大雾
 
-##捐助开发者
-在兴趣的驱动下,写一个`免费`的东西，有欣喜，也还有汗水，希望你喜欢我的作品，同时也能支持一下。
-当然，有钱捧个钱场（右上角的爱心标志，支持支付宝和PayPal捐助），没钱捧个人场，谢谢各位。
+最喜欢的游戏是 Minecraft & OverWatch
 
-##感激
-感谢以下的项目,排名不分先后
-
-* [mou](http://mouapp.com/) 
-* [ace](http://ace.ajax.org/)
-* [jquery](http://jquery.com)
-
-##关于作者
-
-```javascript
-  var ihubo = {
-    nickName  : "草依山",
-    site : "http://jser.me"
-  }
-```
+最喜欢的人 ***暂时保密***

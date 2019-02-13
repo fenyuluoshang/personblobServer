@@ -53,12 +53,15 @@ router.get('/blobtext', async function (req, res, next) {
         })
         return
     }
-    blob.text = fs.readFileSync(`./data/templement/${blob.blobId}.temp`, {
-        encoding: 'utf-8'
-    })
+    var text = fs.readFileSync(`./data/templement/${blob.blobId}.temp`)
+
     res.json({
         success: 1,
-        data: blob
+        data: {
+            blobId: blob.blobId,
+            blobName: blob.blobName,
+            text: text.toString()
+        }
     })
 })
 
