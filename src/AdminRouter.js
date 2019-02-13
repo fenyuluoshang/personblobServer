@@ -19,7 +19,7 @@ router.post('/create', async function (req, res, next) {
         })
         return
     }
-    var blobtext = marked(text).replace('\n', ' ')
+    var blobtext = marked(text).replace(/\n/g, ' ')
     var item = blobtext.replace(/<[^>]+>/g, "").substring(0, 30);
     var blob = await db.bloblist.create({
         blobName: tittle,
