@@ -64,8 +64,8 @@ router.post('/update', async function (req, res, next) {
             blobId: blobId
         }
     })
-    fs.writeFileSync(`./data/markdown/${blob.blobId}.md`, text)
-    fs.writeFileSync(`./data/templement/${blob.blobId}.temp`, blobtext)
+    fs.writeFileSync(`./data/markdown/${blobId}.md`, text)
+    fs.writeFileSync(`./data/templement/${blobId}.temp`, blobtext)
     gitdeal.updateSync()
     res.json({
         success: 1,

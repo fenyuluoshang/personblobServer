@@ -7,9 +7,9 @@ module.exports =
     async function init() {
         if (!fs.existsSync('./data/.git')) {
             await gitinitSync()
-            if (!fs.existsSync('./data/pathdata.sqlite')) {
-                await initDictionarySync()
-            }
+        }
+        if (!fs.existsSync('./data/pathdata.sqlite')) {
+            await initDictionarySync()
         }
     }
 
