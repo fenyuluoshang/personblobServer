@@ -54,7 +54,7 @@ router.post('/update', async function (req, res, next) {
         })
         return
     }
-    var blobtext = marked(text)
+    var blobtext = marked(text).replace('\n', ' ')
     var item = blobtext.replace(/<[^>]+>/g, "").substring(0, 30);
     var blob = await db.bloblist.update({
         blobName: tittle,
