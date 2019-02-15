@@ -6,22 +6,39 @@ const sequelize = new Sequelize({
     storage: './data/pathdata.sqlite',
 })
 
-var bloblist = sequelize.define('bloblist', {
+var bloblist = sequelize.define('blob_list', {
     blobId: {
         type: Sequelize.INTEGER(128),
         autoIncrement: true,
         primaryKey: true
     },
     blobName: Sequelize.STRING,
-    blobItem: Sequelize.TEXT
+    blobItem: Sequelize.TEXT,
+    blobType: Sequelize.INTEGER(128)
+})
+
+var blobType = sequelize.define('blob_type', {
+    blobTypeId: {
+        type: Sequelize.INTEGER(128),
+        autoIncrement: true,
+        primaryKey: true
+    },
+    typeName: Sequelize.STRING
 })
 
 init()
 async function init() {
     await sequelize.sync()
+    if (await blobType.count() < 1) {
+        blobType.create({
+            blobTypeId: 1,
+            typeName: '默认分类'
+        })
+    }
     await gitdeal.updateSync()
 }
 
 module.exports = {
-    bloblist
+    bloblist,
+    blobType
 }

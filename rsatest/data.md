@@ -19,3 +19,13 @@ SERVER ONLINE
 最喜欢的游戏是 Minecraft & OverWatch
 
 最喜欢的人 ***暂时保密***
+
+## 开发语言
+
+| java | nodejs | php | python |
+|------|--------|-----|--------|
+| 入门语言 | 学前端顺便 | 正在学 | 正在学 |
+
+## 关于我的博客
+
+服务端项目已经开源 [github](https://github.com/fenyuluoshang/perosonblobServer)
