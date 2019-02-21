@@ -26,6 +26,16 @@ var blobType = sequelize.define('blob_type', {
     typeName: Sequelize.STRING
 })
 
+blobType.hasMany(bloblist, {
+    targetKey: "blobTypeId",
+    foreignKey: "blobType"
+})
+
+bloblist.belongsTo(blobType, {
+    targetKey: "blobTypeId",
+    foreignKey: "blobType"
+})
+
 init()
 async function init() {
     await sequelize.sync()

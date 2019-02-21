@@ -29,8 +29,18 @@ router.get('/indexpage', async function (req, res, next) {
 })
 
 router.get('/list', async function (req, res, next) {
+    var type = req.query.type;
     var page = parseInt(req.query.page)
-    var list = await db.bloblist.findAll({
+    var list = type == null ? await db.bloblist.findAll({
+        order: [
+            ['createdAt', 'DESC']
+        ],
+        limit: config.pagesize,
+        offset: config.pagesize * page
+    }) : await db.bloblist.findAll({
+        where: {
+            blobType: type
+        },
         order: [
             ['createdAt', 'DESC']
         ],
@@ -41,6 +51,14 @@ router.get('/list', async function (req, res, next) {
         success: 1,
         data: list,
         page: page
+    })
+})
+
+router.get('/type', async function (req, res, next) {
+    var list = await db.blobType.findAll()
+    res.json({
+        success: 1,
+        data: list
     })
 })
 

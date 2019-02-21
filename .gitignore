@@ -4,6 +4,8 @@ node_modules
 /key
 /data/
 
+/rsatest/test.data
+
 # local env files
 .env.local
 .env.*.local
