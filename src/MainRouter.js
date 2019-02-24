@@ -4,6 +4,31 @@ const gitdeal = require('./git/gitdeal')
 const router = require('express').Router()
 const fs = require('fs')
 
+class blobDataSimple {
+    constructor(blobId, blobName, blobItem, blobTypeId, blobTypeName, createdAt, updatedAt) {
+        this.blobId = blobId
+        this.blobName = blobName
+        this.blobItem = blobItem
+        this.blobTypeId = blobTypeId
+        this.blobTypeName = blobTypeName
+        this.createdAt = createdAt
+        this.updatedAt = updatedAt
+    }
+}
+
+class blobData {
+    constructor(blobId, blobName, blobItem, blobTypeId, blobTypeName, createdAt, updatedAt, blobText) {
+        this.blobId = blobId
+        this.blobName = blobName
+        this.blobItem = blobItem
+        this.blobTypeId = blobTypeId
+        this.blobTypeName = blobTypeName
+        this.createdAt = createdAt
+        this.updatedAt = updatedAt
+        this.blobText = blobText
+    }
+}
+
 router.post('/webhook', (req, res, next) => {
     // console.log(req.body)
     gitdeal.pullSync().then((value) => {
@@ -20,11 +45,20 @@ router.get('/indexpage', async function (req, res, next) {
         order: [
             ['createdAt', 'DESC']
         ],
+        include: [db.blobType],
         limit: config.indexpageBlobSize
     })
+
+    var data = []
+
+    list.forEach((val) => {
+        data.push(new blobDataSimple(val.blobId, val.blobName, val.blobItem,
+            val.blob_type.blobTypeId, val.blob_type.typeName, val.createdAt, val.updatedAt))
+    })
+
     res.json({
         success: 1,
-        data: list
+        data: data
     })
 })
 
@@ -35,6 +69,7 @@ router.get('/list', async function (req, res, next) {
         order: [
             ['createdAt', 'DESC']
         ],
+        include: [db.blobType],
         limit: config.pagesize,
         offset: config.pagesize * page
     }) : await db.bloblist.findAll({
@@ -44,26 +79,44 @@ router.get('/list', async function (req, res, next) {
         order: [
             ['createdAt', 'DESC']
         ],
+        include: [db.blobType],
         limit: config.pagesize,
         offset: config.pagesize * page
     })
+
+    var data = []
+
+    list.forEach((val) => {
+        data.push(new blobDataSimple(val.blobId, val.blobName, val.blobItem,
+            val.blob_type.blobTypeId, val.blob_type.typeName, val.createdAt, val.updatedAt))
+    })
+
     res.json({
         success: 1,
-        data: list,
+        data: data,
         page: page
     })
 })
 
 router.get('/type', async function (req, res, next) {
     var list = await db.blobType.findAll()
+    var data = []
+    list.forEach((val) => {
+        data.push({
+            blobTypeId: val.blobTypeId,
+            blobTypeName: val.typeName
+        })
+    })
     res.json({
         success: 1,
-        data: list
+        data: data
     })
 })
 
 router.get('/blobtext', async function (req, res, next) {
-    var blob = await db.bloblist.findByPk(req.query.id)
+    var blob = await db.bloblist.findByPk(req.query.id, {
+        include: [db.blobType]
+    })
     if (blob == null || !fs.existsSync(`./data/templement/${blob.blobId}.temp`)) {
         res.json({
             success: 0,
@@ -75,11 +128,8 @@ router.get('/blobtext', async function (req, res, next) {
 
     res.json({
         success: 1,
-        data: {
-            blobId: blob.blobId,
-            blobName: blob.blobName,
-            text: text.toString()
-        }
+        data: new blobData(blob.blobId, blob.blobName, blob.blobItem,
+            blob.blob_type.blobTypeId, blob.blob_type.typeName, blob.createdAt, blob.updatedAt, text.toString())
     })
 })
 
